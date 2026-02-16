@@ -3,9 +3,9 @@
 /**
  * Module dependencies.
  */
-
+var { debuglog } = require('node:util')
 var app = require('../app');
-var debug = require('debug')('server:server');
+var debug = debuglog('server');
 var http = require('http');
 
 /**
