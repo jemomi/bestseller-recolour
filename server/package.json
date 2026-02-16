@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "node --watch ./bin/www",
-    "start": "node ./bin/www"
+    "dev": "node --env-file-if-exists=.env --watch ./bin/www",
+    "start": "node --env-file-if-exists=.env ./bin/www"
   },
   "dependencies": {
     "express": "~4.16.1"
