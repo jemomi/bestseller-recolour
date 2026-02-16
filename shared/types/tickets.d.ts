@@ -1,4 +1,5 @@
 export type TicketStatus = 'Pending' | 'Sent' | 'In Progress' | 'Completed' | 'Rejected';
+export type TicketPriority = 'High' | 'Medium' | 'Low';
 
 export type TicketSummary = {
   id: number;
