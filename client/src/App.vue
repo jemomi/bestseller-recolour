@@ -1,11 +1,20 @@
-<script setup lang="ts"></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <h1>Welcome to the recolour dashboard</h1>
+  <div v-if="!pending">
+    <pre v-for="ticket in listTickets" :key="ticket.id">
+      id: {{ ticket.id }}
+      name: {{ ticket.name }}
+      status: {{ ticket.status }}
+    </pre>
+  </div>
 </template>
+
+<script setup lang="ts">
+import {useFetch} from '@/composables/useFetch.ts';
+import type {TicketSummary} from '@shared/types';
+
+const { pending, data: listTickets } = useFetch<TicketSummary[]>(() => '/api/tickets')
+
+</script>
 
 <style scoped></style>
