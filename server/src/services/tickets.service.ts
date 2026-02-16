@@ -2,19 +2,7 @@ import * as fs from 'node:fs/promises';
 import path from 'node:path';
 import { dirExists, isImage } from '../utils/fs';
 import {MOCK_DATA} from '../config/paths';
-
-type TicketStatus = 'Pending' | 'Sent' | 'In Progress' | 'Completed' | 'Rejected';
-
-export type TicketSummary = {
-  id: number;
-  name: string;
-  status: TicketStatus;
-};
-
-export type TicketDetail = TicketSummary & {
-  files: string[];
-  guideline: string | null;
-};
+import {TicketDetail, TicketSummary} from '@shared/types';
 
 async function listTicketFolders(): Promise<string[]> {
   if (!(await dirExists(MOCK_DATA))) return [];
