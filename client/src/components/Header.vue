@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <header>
     <ul>
       <li>
         <RouterLink to="/">
@@ -12,7 +12,7 @@
         </RouterLink>
       </li>
     </ul>
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">
