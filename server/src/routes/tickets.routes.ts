@@ -32,9 +32,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.post('/create', async (req, res, next) => {
-  console.log('create new ticket', {
-    ...req.body
-  });
+  console.log('create new ticket', req.body);
   return res.status(200).json({})
 })
 

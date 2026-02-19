@@ -83,10 +83,14 @@ function onSubmit () {
   }
 
   const formData = new FormData(form)
+  const payload = Object.fromEntries(formData.entries())
 
   fetch('api/tickets/create', {
     method: 'POST',
-    body: formData,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
   })
 }
 </script>
