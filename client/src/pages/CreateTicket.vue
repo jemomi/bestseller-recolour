@@ -2,7 +2,7 @@
   <div>
     <form
       ref="createTicketForm"
-      @submit="onSubmit"
+      @submit.prevent="onSubmit"
     >
       <fieldset>
         <LabeledField label="Photo">
@@ -55,7 +55,6 @@
 
       <button
         type="submit"
-        @click.prevent="onBeforeSubmit"
       >
         Create
       </button>
@@ -71,20 +70,25 @@ import LabeledField from '@/components/FormElements/LabeledField.vue';
 
 const createTicketForm = ref<HTMLFormElement>();
 
-function onSubmit (e: SubmitEvent) {
-  console.log(0, e)
-}
+function onSubmit () {
+  const form = createTicketForm.value;
 
-function onBeforeSubmit () {
-  if (!createTicketForm.value) {
-    return;
+  if (!form) {
+    return
   }
-  Object.values(createTicketForm.value).forEach((field: HTMLInputElement | HTMLSelectElement | HTMLButtonElement): void => {
-    field.checkValidity()
-  })
-  createTicketForm.value.querySelector<HTMLInputElement>('[aria-invalid="true"]')?.focus()
-}
+  if (!form.checkValidity()) {
+    const fields = Array.from(form.elements)
+    fields.forEach((field) => {field.checkVisibility()})
+    return
+  }
 
+  const formData = new FormData(form)
+
+  fetch('api/tickets/create', {
+    method: 'POST',
+    body: formData,
+  })
+}
 </script>
 
 <style scoped>
