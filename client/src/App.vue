@@ -1,5 +1,5 @@
 <template>
-  <Header></Header>
+  <HeaderElement></HeaderElement>
   <main class="container">
     <RouterView></RouterView>
   </main>
@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 
-import Header from '@/components/Header.vue';
+import HeaderElement from '@/components/HeaderElement.vue';
 </script>
 
 <style scoped></style>

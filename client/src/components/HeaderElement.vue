@@ -9,7 +9,12 @@
         </li>
         <li>
           <RouterLink to="/create-ticket">
-            create ticket
+            Create ticket
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/ticket-queue">
+            Ticket Queue
           </RouterLink>
         </li>
       </ul>
