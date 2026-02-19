@@ -2,7 +2,8 @@ import * as fs from 'node:fs/promises';
 import path from 'node:path';
 import { dirExists, isImage } from '../utils/fs';
 import {MOCK_DATA} from '../config/paths';
-import {TicketDetail, TicketSummary} from '@shared/types';
+import {TicketDetail, TicketStatus, TicketSummary} from '@shared/types';
+import {statusValues} from '../types/tickets';
 
 async function listTicketFolders(): Promise<string[]> {
   if (!(await dirExists(MOCK_DATA))) return [];
@@ -37,10 +38,12 @@ async function buildTicket(folderName: string): Promise<TicketDetail> {
   const images = files.filter(isImage);
   const guideline = files.find(f => /\.rtf$/i.test(f)) ?? null;
 
+  const pending = Object.values(statusValues)[Math.floor(Math.random() * 5)] as TicketStatus;
+
   return {
     id,
     name: folderName,
-    status: 'Pending',
+    status: pending,
     files: images,
     guideline,
   };
