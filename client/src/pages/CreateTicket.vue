@@ -7,7 +7,7 @@
       <fieldset>
         <LabeledField label="Photo">
           <input
-            name="pid"
+            name="photoId"
             type="text"
             placeholder="Photo Id"
             required
@@ -21,9 +21,9 @@
             required
           />
         </LabeledField>
-        <LabeledField label="Partner">
+        <LabeledField label="Priority">
           <select
-            name="partner"
+            name="priority"
             aria-label="Select priority"
             required
           >
@@ -37,6 +37,7 @@
             <option
               v-for="(priorityValue, idx) in priorityValues"
               :key="`prioVal${idx}`"
+              :value="priorityValue"
             >
               {{ priorityValue }}
             </option>
